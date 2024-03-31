@@ -1,0 +1,20 @@
+Petrov, starshiy inzhener, 20.03.1984, 14, 43000
+Vasenko, 1C-programmist, 11.08.1993, 7, 57000
+Orlova, feya chistoty, 23.05.2000, 3, 24000
+Nikitenko, starshiy inzhener, 01.02.1979, 15, 43000
+Potupalov, mladshiy inzhener, 06.07.1995, 4, 35000
+Khomyachkova, 1C-programmist, 18.02.1994, 6, 57000
+Romanenko, slesar, 05.05.1995, 7, 31000
+Romashkov, nachalnik tseha, 11.03.1969, 31, 89000
+Kuznetsov, mladshiy inzhener, 20.12.1990, 5, 35000
+Sidorova, starshiy inzhener, 17.09.1988, 12, 43000
+Pavlov, 1C-programmist, 29.06.1977, 14, 57000
+Zaytseva, feya chistoty, 04.04.1999, 2, 24000
+Golubev, slesar, 22.03.1996, 6, 31000
+Ivanov, nachalnik tseha, 14.11.1975, 27, 89000
+Ponomareva, mladshiy inzhener, 09.08.1992, 3, 35000
+Popov, starshiy inzhener, 30.05.1983, 11, 43000
+Kovalenko, feya chistoty, 16.07.1991, 6, 24000
+Kozlov, slesar, 12.10.1998, 5, 31000
+Smirnova, 1C-programmist, 28.01.1990, 8, 57000
+Antonov, nachalnik tseha, 05.09.1982, 22, 89000
