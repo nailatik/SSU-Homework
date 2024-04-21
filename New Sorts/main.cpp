@@ -3,53 +3,58 @@
 #include <ctime>
 #include <fstream>
 #include <vector>
+#include <sstream>
 
 using namespace std;
 
-void outArr(int n, vector<int> &arr){
+void outArr(int n, vector<vector<int>> &arr){
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            cout << arr[i * n + j] << ' ';
+            cout << arr[i][j] << ' ';
         }
         cout << endl;
     }
 }
 
-void countingSort(vector<int>& arr, int n) {
-    int rowStart, rowEnd;
-    for (int row = 0; row < n; row++) {
-        rowStart = row * n;
-        rowEnd = rowStart + n;
-        vector<int> counts(41, 0);
-        for (int i = rowStart; i < rowEnd; i++) {
-            counts[arr[i] + 20]++;
+void countingSort(vector<vector<int>> &arr, int n) {
+    vector<vector<int>> counts(n, vector<int>(41, 0));
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            counts[i][arr[i][j] + 20]++;
         }
-        int index = rowStart;
+    }
+
+    for (int i = 0; i < n; i++) {
+        int index = 0;
         for (int k = 0; k < 41; k++) {
-            while (counts[k] > 0) {
-                arr[index] = k - 20;
+            while (counts[i][k] > 0) {
+                arr[i][index] = k - 20;
                 index++;
-                counts[k]--;
+                counts[i][k]--;
             }
         }
     }
 }
 
-void combSort(vector<int>& arr, int n){
-    float gap = n/1.247;
-    while (gap >= 1){
-        if (gap < 1){
+
+void combSort(vector<vector<int>> &arr, int n) {
+    float gap = n / 1.247;
+    while (gap >= 1) {
+        if (gap < 1) {
             gap = 1;
         }
-        for (int i = 0; i < n; i++){
-            for (int j = 0; j < n - gap; j++){
-                if ((j+1)%3 == 0){
-                    if (arr[j * n + i] < arr[(j + gap) * n + i]){
-                        swap(arr[j * n + i], arr[(j + gap) * n + i]);
+        for (int j = 0; j < n; j++) {
+            if ((j + 1) % 3 == 0) {
+                for (int i = 0; i < n - gap; i++) {
+                    if (arr[i][j] < arr[i + gap][j]) {
+                        swap(arr[i][j], arr[i + gap][j]);
                     }
-                } else {
-                    if (arr[j * n + i] > arr[(j + gap) * n + i]){
-                        swap(arr[j * n + i], arr[(j + gap) * n + i]);
+                }
+            } else {
+                for (int i = 0; i < n - gap; i++) {
+                    if (arr[i][j] > arr[i + gap][j]) {
+                        swap(arr[i][j], arr[i + gap][j]);
                     }
                 }
             }
@@ -81,11 +86,20 @@ int main(){
         return 1;
     }
 
-    vector<int> arr;
+    vector<vector<int>> arr;
     int num;
 
-    while (fileInput >> num) {
-        arr.push_back(num);
+    string line;
+
+    while (getline(fileInput, line)) {
+        istringstream iss(line);
+        vector<int> row;
+        int num;
+            while (iss >> num) {
+                row.push_back(num);
+            }
+        arr.push_back(row);
+        row.clear();
     }
 
     fileInput.close();
