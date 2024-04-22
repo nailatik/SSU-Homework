@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void outArr(int n, vector<vector<int>> &arr){
+void outArr(int n, vector<vector <int> > &arr){
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             cout << arr[i][j] << ' ';
@@ -16,8 +16,8 @@ void outArr(int n, vector<vector<int>> &arr){
     }
 }
 
-void countingSort(vector<vector<int>> &arr, int n) {
-    vector<vector<int>> counts(n, vector<int>(41, 0));
+void countingSort(vector<vector <int> > &arr, int n) {
+    vector<vector <int> > counts(n, vector<int>(41, 0));
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -38,7 +38,7 @@ void countingSort(vector<vector<int>> &arr, int n) {
 }
 
 
-void combSort(vector<vector<int>> &arr, int n) {
+void combSort(vector<vector <int> > &arr, int n) {
     float gap = n / 1.247;
     while (gap >= 1) {
         if (gap < 1) {
@@ -63,6 +63,38 @@ void combSort(vector<vector<int>> &arr, int n) {
     }
 }
 
+void bubbleSort(vector<vector <int> > &arr, int n){
+    int  j, a1, b1, a2, b2;
+    bool sort_flag;
+    for(j = 1; j < n - 1; ++j){
+        do {
+            sort_flag = false;
+            for(int i = j; i >= 1; --i){
+                if(arr[i][j - i] < arr[i - 1][j - (i - 1)]){
+                    swap(arr[i][j - i], arr[i - 1][j - (i - 1)]);
+                    sort_flag = true;
+                }
+            }
+        } while(sort_flag);
+    }
+    for(j = 1; j < n; ++j){
+        do {
+            sort_flag = false;
+            for(int i = j; i >= 1; --i){
+                a1 = n - 1 - j + (i - 1);
+                b1 = n - 1 - (i - 1);
+                a2 = n - 1 - j + i;
+                b2 = n - 1 - i;
+                if(arr[a1][b1] > arr[a2][b2]){
+                    swap(arr[a1][b1], arr[a2][b2]);
+                    sort_flag = true;
+                }
+            }
+        } while(sort_flag);
+    }
+}
+
+
 int main(){
     setlocale(LC_ALL, "RU");
     int n;
@@ -86,7 +118,7 @@ int main(){
         return 1;
     }
 
-    vector<vector<int>> arr;
+    vector<vector <int> > arr;
     int num;
 
     string line;
@@ -109,7 +141,7 @@ int main(){
 
     int var;
     do {
-        cout << "Введите номер сортировки, которую хотите применить: \n" << "1. Сортировка подсчётом. \n" << "2. Сортировка расчёской. \n";
+        cout << "Введите номер сортировки, которую хотите применить: \n" << "1. Сортировка подсчётом. \n" << "2. Сортировка расчёской. \n" << "3. Сортировка расчёской. \n";
         cin >> var;
 
         switch (var)
@@ -125,6 +157,8 @@ int main(){
             break;
         
         case 3:
+            cout << "Вы выбрали сортировку пузырьком, так выглядит ваш отсортированный массив: \n";
+            bubbleSort(arr, n);
             break;
 
         default:
