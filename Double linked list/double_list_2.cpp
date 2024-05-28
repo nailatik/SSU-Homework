@@ -78,39 +78,28 @@ int main() {
 	int n;
 	cout << "Введите размерность: ";
 	cin >> n;
-    cout << "Начните ввод вашей последовательности:\n" << "> ";
+	cout << "Начните ввод ваших чисел:\n" << "> ";
+
 	list* head = NULL;
 	list* tail = NULL;
-	int maximum, last_odd;
-	bool have_odd = false;
-	for (int i = 0; i < n; i++) {
-		int x;
-		cin >> x;
-		push(head, tail, x);
-		if (i == 0)
-			maximum = x;
-		else
-			maximum = max(maximum, x);
-		if (x % 2 != 0) {
-			last_odd = x;
-			have_odd = true;
-		}
-	}
-
 	list* temp_head = NULL;
 	list* temp_tail = NULL;
 
-	if (have_odd) {
-		while (head) {
-			push(temp_head, temp_tail, head->inf);
-			if (head->inf == maximum)
-				push(temp_head, temp_tail, last_odd);
-			head = head->next;
-		}
-        cout << "Итоговая последовательность:\n" << "> ";
-		print(temp_head, temp_tail);
+	for (int i = 0; i < n; i++) {
+		int x;
+		cin >> x;
+		if (x % 2 == 0)
+			push(head, tail, x);
+		else
+			push(temp_head, temp_tail, x);
 	}
 
+	while (temp_head) {
+		push(head, tail, temp_head->inf);
+		del(temp_head, temp_tail, temp_head);
+	}
+    cout << "Ваш результат:\n" << "> ";
+	print(head, tail);
 
 	return 0;
 }
