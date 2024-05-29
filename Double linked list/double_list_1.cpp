@@ -23,38 +23,12 @@ void push(list*& h, list*& t, int x) {
 	t = r;
 }
 
-void insert(list*& h, list*& t, list*& r, int x) {
-	list* p = new list;
-	p->inf = x;
-	if (r == t) {
-		p->next = NULL;
-		p->prev = r;
-		r->next = p;
-		t = p;
-	}
-	else {
-		r->next->prev = p;
-		p->next = r->next;
-		p->prev = r;
-		r->next = p;
-	}
-}
-
 void print(list* h, list* t) {
 	list* p = h;
 	while (p) {
 		cout << p->inf << " ";
 		p = p->next;
 	}
-}
-
-list* find(list* h, list* t, int x) {
-	list* p = h;
-	while (p) {
-		if (p->inf == x) break;
-		p = p->next;
-	}
-	return p;
 }
 
 void del(list*& h, list*& t, list* r) {
