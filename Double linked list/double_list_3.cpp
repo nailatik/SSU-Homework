@@ -8,7 +8,6 @@ struct list
     list *prev;
 };
 
-//добавление эл-та в список
 void push(list *&h, list *&t, int x)
 {
     list *r = new list;
@@ -28,7 +27,6 @@ void push(list *&h, list *&t, int x)
     t = r;
 }
 
-//вывод списка
 void print(list *h, list *t)
 {
     list *p = h;
@@ -39,7 +37,6 @@ void print(list *h, list *t)
     }
 }
 
-//удаление списка
 void del_list(list *&h, list *&t)
 {
     list *current = h;
@@ -99,7 +96,7 @@ int main()
     int x;
 
     cout << "Начните ввод ваших чисел:\n" << "> ";
-    for (int i = 0; i < n; i++) //заполнение списка
+    for (int i = 0; i < n; i++)
     {
         cin >> x;
         push(head, tail, x);
