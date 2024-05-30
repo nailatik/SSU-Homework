@@ -43,11 +43,11 @@ void insert(tree*& tr, int x) { // вставка
     }
 }
 
-void inorder(tree* tr) { // симметричный обход
+void preorder(tree* tr) { // симметричный обход
     if (tr) {
-        inorder(tr->left);
         cout << tr->inf << " ";
-        inorder(tr->right);
+        preorder(tr->left);
+        preorder(tr->right);
     }
 }
 
@@ -75,7 +75,7 @@ int main() {
     }
 
     cout << "Ваше дерево после симметричного обхода: ";
-    inorder(tr);
+    preorder(tr);
     cout << endl;
 
     int sumLeaves = sumOfLeaves(tr);
