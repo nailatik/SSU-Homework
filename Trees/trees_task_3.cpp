@@ -38,6 +38,9 @@ void insert(tree*& tr, int x) { // вставка
                     y->left = n;
                     break;
                 }
+            } else {
+                delete n;
+                break;
             }
         }
     }
