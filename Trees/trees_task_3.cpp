@@ -77,7 +77,7 @@ int main() {
         insert(tr, stoi(input));
     }
 
-    cout << "Ваше дерево после симметричного обхода: ";
+    cout << "Ваше дерево после прямого обхода: ";
     preorder(tr);
     cout << endl;
 
